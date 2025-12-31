@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: 'class',
     content: [
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
@@ -56,7 +55,7 @@ export default {
                     warning: 'rgb(var(--status-warning) / <alpha-value>)',
                     info: 'rgb(var(--status-info) / <alpha-value>)',
                 },
-                // Slate Scale for Dark Mode
+                // Slate Scale
                 slate: {
                     50: '#f8fafc',
                     100: '#f1f5f9',
@@ -101,12 +100,10 @@ export default {
                 'mustard': '0 10px 40px -10px rgba(230, 173, 43, 0.3)',
                 'mustard-lg': '0 20px 60px -15px rgba(230, 173, 43, 0.4)',
                 'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
-                'glass-dark': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
                 'mustard-gradient': 'linear-gradient(135deg, #E6AD2B 0%, #F5C75F 50%, #E6AD2B 100%)',
-                'dark-gradient': 'linear-gradient(180deg, rgba(28, 25, 23, 0) 0%, rgba(28, 25, 23, 0.8) 100%)',
             },
             animation: {
                 'fade-in': 'fadeIn 0.5s ease-in-out',

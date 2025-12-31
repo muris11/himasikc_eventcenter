@@ -24,9 +24,6 @@ class Index extends Component
     #[Url(as: 'status')]
     public $selectedStatus = 'all'; // all, active, inactive
 
-    #[Url(as: 'view')]
-    public $viewMode = 'grid'; // grid, list
-
     public $perPage = 9;
 
     public function updatingSearch()

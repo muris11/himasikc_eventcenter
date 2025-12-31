@@ -66,16 +66,16 @@ const GlassmorphismModal = ({
       >
         {/* Header */}
         {(title || showCloseButton) && (
-          <div className="flex items-center justify-between p-6 border-b border-slate-200/20 dark:border-slate-700/20">
+          <div className="flex items-center justify-between p-6 border-b border-slate-200/20">
             {title && (
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+              <h3 className="text-2xl font-bold text-slate-900">
                 {title}
               </h3>
             )}
             {showCloseButton && (
               <button
                 onClick={onClose}
-                className="ml-auto p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors"
+                className="ml-auto p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100/50 transition-colors"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />

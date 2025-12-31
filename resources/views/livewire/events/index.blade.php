@@ -138,32 +138,11 @@
                         dari <span class="font-bold text-text-main">{{ $events->total() }}</span> event
                     </p>
 
-                    {{-- View Toggle --}}
-                    <div class="flex gap-1 bg-surface border border-border rounded-lg p-1 self-start sm:self-auto shadow-sm">
-                        <button 
-                            wire:click="$set('viewMode', 'grid')"
-                            class="p-2 rounded-md transition-all duration-200 {{ $viewMode === 'grid' ? 'bg-primary-50 text-primary-600 shadow-sm' : 'text-text-muted hover:bg-surface-secondary hover:text-text-main' }}"
-                            aria-label="Grid View"
-                        >
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
-                            </svg>
-                        </button>
-                        <button 
-                            wire:click="$set('viewMode', 'list')"
-                            class="p-2 rounded-md transition-all duration-200 {{ $viewMode === 'list' ? 'bg-primary-50 text-primary-600 shadow-sm' : 'text-text-muted hover:bg-surface-secondary hover:text-text-main' }}"
-                            aria-label="List View"
-                        >
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                            </svg>
-                        </button>
-                    </div>
                 </div>
 
                 {{-- Loading State (Skeleton) --}}
                 <div wire:loading.class.remove="hidden" class="hidden w-full">
-                    <div class="grid gap-3 sm:gap-6 {{ $viewMode === 'grid' ? 'grid-cols-2 sm:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1' }}">
+                    <div class="grid gap-3 sm:gap-6 grid-cols-2 sm:grid-cols-2 xl:grid-cols-3">
                         @for($i=0; $i<6; $i++)
                             <div class="bg-surface rounded-xl sm:rounded-2xl border border-border overflow-hidden shadow-sm animate-pulse">
                                 <div class="h-32 sm:h-48 bg-surface-secondary w-full"></div>
@@ -190,11 +169,11 @@
                 {{-- Events Grid --}}
                 <div wire:loading.class="hidden" class="w-full">
                     @if($events->count() > 0)
-                        <div class="grid gap-3 sm:gap-6 {{ $viewMode === 'grid' ? 'grid-cols-2 sm:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1' }}">
+                        <div class="grid gap-3 sm:gap-6 grid-cols-2 sm:grid-cols-2 xl:grid-cols-3">
                             @foreach($events as $event)
                                 <article class="card group flex flex-col h-full hover:shadow-xl hover:-translate-y-1 hover:border-primary-200 transition-all duration-300 bg-surface rounded-xl sm:rounded-2xl border border-border overflow-hidden">
                                     {{-- Image --}}
-                                    <a href="{{ route('events.show', $event->slug) }}" class="block relative {{ $viewMode === 'grid' ? 'h-32 sm:h-52' : 'h-48 sm:h-56 md:h-auto md:w-1/3 md:float-left' }} overflow-hidden bg-surface-secondary">
+                                    <a href="{{ route('events.show', $event->slug) }}" class="block relative h-32 sm:h-52 overflow-hidden bg-surface-secondary">
                                         @if ($event->image_path)
                                             <img 
                                                 src="{{ asset('storage/' . $event->image_path) }}" 
@@ -224,7 +203,7 @@
                                     </a>
 
                                     {{-- Content --}}
-                                    <div class="p-3 sm:p-6 flex flex-col flex-grow {{ $viewMode === 'list' ? 'md:w-2/3 md:float-left' : '' }}">
+                                    <div class="p-3 sm:p-6 flex flex-col flex-grow">
                                         {{-- Meta --}}
                                         <div class="flex flex-wrap items-center gap-1.5 sm:gap-3 mb-2 sm:mb-3 text-sm">
                                             @if($event->category)

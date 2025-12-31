@@ -49,9 +49,9 @@ const InteractiveCard = ({
   const baseClasses = `
     relative rounded-2xl overflow-hidden
     transition-all duration-300 ease-out
-    ${glassEffect ? 'glass backdrop-blur-xl' : 'bg-white dark:bg-slate-800'}
+    ${glassEffect ? 'glass backdrop-blur-xl' : 'bg-white'}
     ${glowEffect && isHovered ? 'shadow-glow-lg' : 'shadow-lg hover:shadow-xl'}
-    border border-slate-200 dark:border-slate-700
+    border border-slate-200
     ${className}
   `;
 

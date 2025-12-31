@@ -14,7 +14,7 @@ import ReactDOM from 'react-dom/client';
 
 // Import UI Components with error handling
 let InteractiveCard, AnimatedCounter, GlassmorphismModal, MasonryGrid, SkeletonLoader;
-let useScrollAnimation, useDarkMode;
+let useScrollAnimation;
 
 try {
     InteractiveCard = require('./components/ui/InteractiveCard').default;
@@ -23,7 +23,6 @@ try {
     MasonryGrid = require('./components/ui/MasonryGrid').default;
     SkeletonLoader = require('./components/ui/SkeletonLoader').default;
     useScrollAnimation = require('./hooks/useScrollAnimation').useScrollAnimation;
-    useDarkMode = require('./hooks/useDarkMode').useDarkMode;
 } catch (error) {
     console.warn('Some components failed to load:', error);
 }
@@ -109,36 +108,8 @@ function mountReactComponents() {
 export {
   AnimatedCounter,
   GlassmorphismModal, InteractiveCard, MasonryGrid,
-  SkeletonLoader, useDarkMode, useScrollAnimation
+  SkeletonLoader, useScrollAnimation
 };
-
-// Dark Mode Toggle Functionality with error handling
-window.toggleDarkMode = function() {
-    try {
-        const html = document.documentElement;
-        const isDark = html.classList.contains('dark');
-        
-        if (isDark) {
-            html.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-        } else {
-            html.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        }
-    } catch (error) {
-        console.error('Dark mode toggle error:', error);
-    }
-};
-
-// Initialize theme on load with error handling
-try {
-    if (localStorage.getItem('theme') === 'dark' || 
-        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    }
-} catch (error) {
-    console.warn('Theme initialization error:', error);
-}
 
 // Register Service Worker for caching
 if ('serviceWorker' in navigator) {

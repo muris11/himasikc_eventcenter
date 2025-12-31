@@ -11,10 +11,10 @@
 @plugin "@tailwindcss/forms";
 
 @layer base {
-    :root {
-        /* Light Mode - Crisp Zinc & White */
-        --background: 255 255 255; /* #FFFFFF */
-        --background-secondary: 250 250 250; /* #FAFAFA (Zinc-50) */
+	    :root {
+	        /* Light Mode - Crisp Zinc & White */
+	        --background: 255 255 255; /* #FFFFFF */
+	        --background-secondary: 250 250 250; /* #FAFAFA (Zinc-50) */
         
         --surface: 255 255 255; /* #FFFFFF */
         --surface-secondary: 244 244 245; /* #F4F4F5 (Zinc-100) */
@@ -36,32 +36,9 @@
         /* Status Colors */
         --status-success: 16 185 129; /* #10B981 */
         --status-error: 239 68 68; /* #EF4444 */
-        --status-warning: 245 158 11; /* #F59E0B */
-        --status-info: 59 130 246; /* #3B82F6 */
-    }
-
-    .dark {
-        /* Dark Mode - Deep Slate & Tech */
-        --background: 2 6 23; /* #020617 (Slate-950) */
-        --background-secondary: 15 23 42; /* #0F172A (Slate-900) */
-
-        --surface: 15 23 42; /* #0F172A (Slate-900) */
-        --surface-secondary: 30 41 59; /* #1E293B (Slate-800) */
-        --surface-tertiary: 51 65 85; /* #334155 (Slate-700) */
-
-        --primary: 230 173 43; /* #E6AD2B */
-        --primary-foreground: 255 255 255;
-
-        --secondary: 148 163 184; /* #94A3B8 (Slate-400) */
-        --secondary-foreground: 15 23 42;
-
-        --text-main: 248 250 252; /* #F8FAFC (Slate-50) */
-        --text-muted: 148 163 184; /* #94A3B8 (Slate-400) */
-        --text-inverted: 2 6 23;
-
-        --border: 30 41 59; /* #1E293B (Slate-800) */
-        --border-subtle: 15 23 42; /* #0F172A (Slate-900) */
-    }
+	        --status-warning: 245 158 11; /* #F59E0B */
+	        --status-info: 59 130 246; /* #3B82F6 */
+	    }
 
     * {
         border-color: rgb(var(--border));
@@ -189,17 +166,13 @@
 
 @layer utilities {
     /* Refined Glass Utilities */
-    .glass {
-        background-color: rgb(255 255 255 / 0.8);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom-width: 1px;
-        border-color: rgb(228 228 231 / 0.5);
-    }
-    :is(.dark .glass) {
-        background-color: rgb(2 6 23 / 0.8);
-        border-color: rgb(30 41 59 / 0.5);
-    }
+	    .glass {
+	        background-color: rgb(255 255 255 / 0.8);
+	        backdrop-filter: blur(12px);
+	        -webkit-backdrop-filter: blur(12px);
+	        border-bottom-width: 1px;
+	        border-color: rgb(228 228 231 / 0.5);
+	    }
 
     .glass-panel {
         background-color: rgb(255 255 255 / 0.05);
@@ -318,4 +291,3 @@
 .pause-on-hover:hover .animate-marquee-reverse {
     animation-play-state: paused;
 }
-
