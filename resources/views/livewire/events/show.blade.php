@@ -38,14 +38,14 @@
                     {{-- Hero Image with Parallax Effect --}}
                     <div x-data="{ lightbox: false, scroll: 0 }" 
                          @scroll.window="scroll = window.pageYOffset"
-                         class="relative group h-[300px] sm:h-[400px] overflow-hidden">
+                         class="relative group overflow-hidden bg-surface-secondary">
                         @if ($event->image_path)
                             <div @click="lightbox = true" class="cursor-pointer w-full h-full relative">
                                 <img src="{{ asset('storage/' . $event->image_path) }}" 
                                      alt="{{ $event->title }}" 
-                                     class="w-full h-full object-cover transition-transform duration-100 ease-linear"
-                                     :style="`transform: translateY(${scroll * 0.2}px) scale(1.1)`">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                                     class="w-full h-auto object-contain max-h-[400px] sm:max-h-[500px] transition-opacity duration-300"
+                                     loading="eager"
+                                     fetchpriority="high">
                                 
                                 {{-- Zoom Icon --}}
                                 <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -103,7 +103,7 @@
                                 </span>
                             </div>
 
-                            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-main leading-tight mb-6 font-heading tracking-tight">
+                            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-text-main leading-tight mb-6 font-heading tracking-tight">
                                 {{ $event->title }}
                             </h1>
                             

@@ -48,15 +48,13 @@
                      {{-- Hero Image with Parallax Effect --}}
                      <div x-data="{ scroll: 0 }" 
                           @scroll.window="scroll = window.pageYOffset"
-                          class="relative h-[300px] sm:h-[400px] overflow-hidden bg-surface-secondary">
+                          class="relative overflow-hidden bg-surface-secondary">
                          @if ($post->image_path)
                              <img src="{{ asset('storage/' . $post->image_path) }}" 
                                   alt="{{ $post->title }}" 
-                                  class="w-full h-full object-cover transition-transform duration-100 ease-linear"
+                                  class="w-full h-auto object-contain max-h-[400px] sm:max-h-[500px]"
                                   loading="eager"
-                                  fetchpriority="high"
-                                  :style="`transform: translateY(${scroll * 0.2}px) scale(1.1)`">
-                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                                  fetchpriority="high">
                          @else
                              <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-50 to-primary-100">
                                  <svg class="w-20 h-20 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,7 +80,7 @@
                                  </span>
                              </div>
  
-                             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-main leading-tight mb-8 font-heading tracking-tight">
+                             <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-text-main leading-tight mb-8 font-heading tracking-tight">
                                  {{ $post->title }}
                              </h1>
                              
