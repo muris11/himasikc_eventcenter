@@ -1,0 +1,25 @@
+# PHP Configuration for Production Hosting
+# Add this to .htaccess or php.ini
+
+# Increase upload limits
+php_value upload_max_filesize 10M
+php_value post_max_size 12M
+php_value max_file_uploads 20
+php_value memory_limit 256M
+php_value max_execution_time 300
+
+# Disable error display in production
+php_flag display_errors off
+php_flag display_startup_errors off
+php_value error_reporting E_ALL & ~E_DEPRECATED & ~E_STRICT
+
+# Set timezone
+php_value date.timezone Asia/Jakarta
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

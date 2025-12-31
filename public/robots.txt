@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://event-center.himasikcpolindra.my.id/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /login
+Disallow: /logout
+Disallow: /livewire/
+Disallow: /_debugbar/
+Disallow: /storage/framework/
+
+# Allow important pages
+Allow: /events/
+Allow: /blog/
+Allow: /about
+Allow: /help
+Allow: /privacy-policy
+Allow: /terms-of-service
+Allow: /storage/
+
+# Crawl delay
+Crawl-delay: 1
+
+# Host directive (for Yandex)
+Host: https://event-center.himasikcpolindra.my.id
