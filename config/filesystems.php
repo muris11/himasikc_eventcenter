@@ -38,6 +38,15 @@ return [
             'report' => false,
         ],
 
+        // Dedicated disk for Livewire temporary uploads (must be writable on hosting).
+        'livewire' => [
+            'driver' => 'local',
+            'root' => storage_path('app'),
+            'visibility' => 'private',
+            'throw' => false,
+            'report' => false,
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

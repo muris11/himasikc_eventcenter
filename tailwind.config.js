@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+    // This project does not support dark mode. Using `class` prevents OS-level
+    // `prefers-color-scheme: dark` from activating any potential `dark:` styles.
+    darkMode: 'class',
     content: [
         "./resources/**/*.blade.php",
         "./resources/**/*.js",

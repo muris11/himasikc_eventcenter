@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Vite;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,6 +22,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Ensure required storage directories exist (important on shared hosting).
+        File::ensureDirectoryExists(storage_path('app/private'));
+        File::ensureDirectoryExists(storage_path('app/public'));
+        File::ensureDirectoryExists(storage_path('app/livewire-tmp'));
+
         if (! (bool) env('VITE_USE_HOT', false)) {
             app(Vite::class)->useHotFile(storage_path('app/vite.hot'));
         }

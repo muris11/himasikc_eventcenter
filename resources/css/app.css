@@ -11,7 +11,8 @@
 @plugin "@tailwindcss/forms";
 
 @layer base {
-    :root {
+    :root,
+    html {
         color-scheme: light;
         /* Light Mode - Crisp Zinc & White */
         --background: 255 255 255; /* #FFFFFF */
@@ -43,6 +44,11 @@
 
     * {
         border-color: rgb(var(--border));
+    }
+
+    html {
+        background-color: rgb(var(--background));
+        color: rgb(var(--text-main));
     }
 
     body {

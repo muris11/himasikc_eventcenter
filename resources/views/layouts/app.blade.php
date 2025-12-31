@@ -202,6 +202,9 @@
 
     <style>
         [x-cloak] { display: none !important; }
+        /* Hard-disable any auto darkening heuristics on mobile browsers */
+        html { color-scheme: light; background: #fff; }
+        body { background: #fff; color: #09090B; }
     </style>
     @stack('styles')
 </head>

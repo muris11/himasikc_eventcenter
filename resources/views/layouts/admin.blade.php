@@ -8,6 +8,12 @@
     <meta name="color-scheme" content="light">
     <meta name="supported-color-schemes" content="light">
 
+    <style>
+        /* Hard-disable any auto darkening heuristics on mobile browsers */
+        html { color-scheme: light; background: #fff; }
+        body { background: #fff; color: #09090B; }
+    </style>
+
     @php
         $metaTitle = trim($__env->yieldContent('title'));
         if ($metaTitle === '') {
