@@ -112,7 +112,7 @@
  
                          {{-- Content --}}
                          <div class="blog-content">
-                             <div class="text-text-muted leading-relaxed space-y-6">
+                             <div class="prose prose-lg max-w-none prose-headings:text-text-main prose-p:text-text-muted prose-a:text-primary-600 prose-strong:text-text-main prose-ul:my-4 prose-ol:my-4 prose-li:my-2">
                                  {!! auto_format_text($post->content) !!}
                              </div>
                          </div>
@@ -187,5 +187,321 @@
              }));
          }
      </script>
+    
+    <!-- Highlight.js for Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Apply syntax highlighting to all code blocks
+            document.querySelectorAll('.blog-content pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+    
+    <style>
+        /* Reset dan base styling untuk blog content */
+        .blog-content * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .blog-content {
+            font-size: 15px !important;
+            line-height: 1.8 !important;
+            color: #4B5563 !important;
+        }
+        
+        /* Code block styling for blog content */
+        .blog-content pre {
+            background-color: #FAFAFA !important;
+            border: 1px solid #E0E0E0 !important;
+            padding: 20px !important;
+            border-radius: 12px !important;
+            overflow-x: auto !important;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+            margin: 24px 0 !important;
+            display: block !important;
+            white-space: pre-wrap !important;
+            overflow-y: auto !important;
+            max-height: 500px !important;
+            word-break: break-word !important;
+        }
+        
+        .blog-content pre code {
+            background: transparent !important;
+            padding: 0 !important;
+            border: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            display: block !important;
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+        }
+        
+        /* Inline code styling */
+        .blog-content :not(pre) > code {
+            background-color: #F3F4F6 !important;
+            color: #EC4899 !important;
+            padding: 2px 8px !important;
+            border-radius: 6px !important;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            font-weight: 500 !important;
+        }
+        
+        /* Blockquote styling */
+        .blog-content blockquote {
+            border-left: 4px solid #3B82F6 !important;
+            padding: 16px 24px !important;
+            font-style: italic !important;
+            color: #6B7280 !important;
+            margin: 24px 0 !important;
+            background-color: #F9FAFB !important;
+            border-radius: 8px !important;
+            font-size: 1.05em !important;
+            line-height: 1.7 !important;
+        }
+        
+        .blog-content blockquote p {
+            margin: 0 !important;
+        }
+        
+        .blog-content blockquote p:not(:last-child) {
+            margin-bottom: 12px !important;
+        }
+        
+        /* Horizontal rule styling */
+        .blog-content hr {
+            border: none !important;
+            border-top: 2px solid #E5E7EB !important;
+            margin: 40px 0 !important;
+            height: 0 !important;
+        }
+        
+        /* Lists styling */
+        .blog-content ul,
+        .blog-content ol {
+            margin: 24px 0 !important;
+            padding-left: 40px !important;
+            color: #4B5563 !important;
+            list-style-position: outside !important;
+        }
+        
+        .blog-content li {
+            margin: 12px 0 !important;
+            line-height: 1.8 !important;
+            color: #4B5563 !important;
+            padding-left: 8px !important;
+        }
+        
+        .blog-content ul {
+            list-style-type: disc !important;
+        }
+        
+        .blog-content ol {
+            list-style-type: decimal !important;
+        }
+        
+        .blog-content ul ul {
+            list-style-type: circle !important;
+            margin: 8px 0 !important;
+        }
+        
+        .blog-content ol ol {
+            list-style-type: lower-alpha !important;
+            margin: 8px 0 !important;
+        }
+        
+        /* Headings in content */
+        .blog-content h1,
+        .blog-content h2,
+        .blog-content h3,
+        .blog-content h4,
+        .blog-content h5,
+        .blog-content h6 {
+            font-weight: 700 !important;
+            margin-top: 48px !important;
+            margin-bottom: 24px !important;
+            color: #1F2937 !important;
+            line-height: 1.3 !important;
+            font-family: inherit !important;
+        }
+        
+        .blog-content h1:first-child,
+        .blog-content h2:first-child,
+        .blog-content h3:first-child,
+        .blog-content h4:first-child,
+        .blog-content h5:first-child,
+        .blog-content h6:first-child {
+            margin-top: 0 !important;
+        }
+        
+        .blog-content h1 { font-size: 1.75em !important; }
+        .blog-content h2 { font-size: 1.375em !important; }
+        .blog-content h3 { font-size: 1.125em !important; }
+        .blog-content h4 { font-size: 1em !important; }
+        .blog-content h5 { font-size: 0.9em !important; }
+        .blog-content h6 { font-size: 0.85em !important; }
+        
+        /* Paragraphs */
+        .blog-content p {
+            margin: 0 0 20px 0 !important;
+            line-height: 1.8 !important;
+            color: #4B5563 !important;
+            font-size: 15px !important;
+            text-align: justify !important;
+            word-spacing: 0.05em !important;
+        }
+        
+        .blog-content p:first-child {
+            margin-top: 0 !important;
+        }
+        
+        .blog-content p:last-child {
+            margin-bottom: 0 !important;
+        }
+        
+        .blog-content p + p {
+            margin-top: 20px !important;
+        }
+        
+        .blog-content h1 + p,
+        .blog-content h2 + p,
+        .blog-content h3 + p,
+        .blog-content h4 + p,
+        .blog-content h5 + p,
+        .blog-content h6 + p {
+            margin-top: 0 !important;
+        }
+        
+        /* Links */
+        .blog-content a {
+            color: #3B82F6 !important;
+            text-decoration: underline !important;
+            text-decoration-thickness: 1px !important;
+            text-underline-offset: 2px !important;
+            font-weight: 500 !important;
+            transition: all 0.2s !important;
+        }
+        
+        .blog-content a:hover {
+            color: #2563EB !important;
+            text-decoration-thickness: 2px !important;
+        }
+        
+        /* Images */
+        .blog-content img {
+            border-radius: 12px !important;
+            max-width: 100% !important;
+            height: auto !important;
+            margin: 32px auto !important;
+            display: block !important;
+            box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1) !important;
+        }
+        
+        /* Strong/Bold */
+        .blog-content strong,
+        .blog-content b {
+            font-weight: 700 !important;
+            color: #1F2937 !important;
+        }
+        
+        /* Italic/Em */
+        .blog-content em,
+        .blog-content i {
+            font-style: italic !important;
+        }
+        
+        /* Underline */
+        .blog-content u {
+            text-decoration: underline !important;
+        }
+        
+        /* Strikethrough */
+        .blog-content s,
+        .blog-content strike,
+        .blog-content del {
+            text-decoration: line-through !important;
+        }
+        
+        /* Superscript & Subscript */
+        .blog-content sup {
+            vertical-align: super !important;
+            font-size: 0.75em !important;
+        }
+        
+        .blog-content sub {
+            vertical-align: sub !important;
+            font-size: 0.75em !important;
+        }
+        
+        /* Tables (if any) */
+        .blog-content table {
+            width: 100% !important;
+            border-collapse: collapse !important;
+            margin: 24px 0 !important;
+        }
+        
+        .blog-content table th,
+        .blog-content table td {
+            padding: 12px 16px !important;
+            border: 1px solid #E5E7EB !important;
+            text-align: left !important;
+        }
+        
+        .blog-content table th {
+            background-color: #F9FAFB !important;
+            font-weight: 700 !important;
+            color: #1F2937 !important;
+        }
+        
+        .blog-content table td {
+            color: #4B5563 !important;
+        }
+        
+        /* Spacing between different elements */
+        .blog-content h1 + h2,
+        .blog-content h2 + h3,
+        .blog-content h3 + h4,
+        .blog-content h4 + h5,
+        .blog-content h5 + h6 {
+            margin-top: 24px !important;
+        }
+        
+        .blog-content ul + p,
+        .blog-content ol + p,
+        .blog-content p + ul,
+        .blog-content p + ol {
+            margin-top: 20px !important;
+        }
+        
+        .blog-content ul + h1,
+        .blog-content ul + h2,
+        .blog-content ul + h3,
+        .blog-content ul + h4,
+        .blog-content ul + h5,
+        .blog-content ul + h6,
+        .blog-content ol + h1,
+        .blog-content ol + h2,
+        .blog-content ol + h3,
+        .blog-content ol + h4,
+        .blog-content ol + h5,
+        .blog-content ol + h6 {
+            margin-top: 48px !important;
+        }
+        
+        /* Remove any unwanted margins on first/last elements */
+        .blog-content > *:first-child {
+            margin-top: 0 !important;
+        }
+        
+        .blog-content > *:last-child {
+            margin-bottom: 0 !important;
+        }
+    </style>
  </div>
  </div>

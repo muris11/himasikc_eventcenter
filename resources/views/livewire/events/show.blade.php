@@ -153,7 +153,7 @@
                         {{-- Description --}}
                         <div class="event-content mb-12">
                             <h3 class="text-2xl font-bold text-text-main mb-6 font-heading">Deskripsi Event</h3>
-                            <div class="leading-relaxed space-y-4">
+                            <div class="prose prose-lg max-w-none prose-headings:text-text-main prose-p:text-text-muted prose-a:text-primary-600 prose-strong:text-text-main prose-ul:my-4 prose-ol:my-4 prose-li:my-2">
                                 {!! auto_format_text($event->description) !!}
                             </div>
                         </div>
@@ -359,5 +359,321 @@
 	            }));
 	        }
 	    </script>
+
+    <!-- Highlight.js for Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Apply syntax highlighting to all code blocks
+            document.querySelectorAll('.event-content pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+
+    <style>
+        /* Reset dan base styling untuk event content */
+        .event-content * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .event-content {
+            font-size: 15px !important;
+            line-height: 1.8 !important;
+            color: #4B5563 !important;
+        }
+        
+        /* Code block styling for event content */
+        .event-content pre {
+            background-color: #FAFAFA !important;
+            border: 1px solid #E0E0E0 !important;
+            padding: 20px !important;
+            border-radius: 12px !important;
+            overflow-x: auto !important;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+            margin: 24px 0 !important;
+            display: block !important;
+            white-space: pre-wrap !important;
+            overflow-y: auto !important;
+            max-height: 500px !important;
+            word-break: break-word !important;
+        }
+        
+        .event-content pre code {
+            background: transparent !important;
+            padding: 0 !important;
+            border: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            display: block !important;
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+        }
+        
+        /* Inline code styling */
+        .event-content :not(pre) > code {
+            background-color: #F3F4F6 !important;
+            color: #EC4899 !important;
+            padding: 2px 8px !important;
+            border-radius: 6px !important;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            font-weight: 500 !important;
+        }
+        
+        /* Blockquote styling */
+        .event-content blockquote {
+            border-left: 4px solid #3B82F6 !important;
+            padding: 16px 24px !important;
+            font-style: italic !important;
+            color: #6B7280 !important;
+            margin: 24px 0 !important;
+            background-color: #F9FAFB !important;
+            border-radius: 8px !important;
+            font-size: 1.05em !important;
+            line-height: 1.7 !important;
+        }
+        
+        .event-content blockquote p {
+            margin: 0 !important;
+        }
+        
+        .event-content blockquote p:not(:last-child) {
+            margin-bottom: 12px !important;
+        }
+        
+        /* Horizontal rule styling */
+        .event-content hr {
+            border: none !important;
+            border-top: 2px solid #E5E7EB !important;
+            margin: 40px 0 !important;
+            height: 0 !important;
+        }
+        
+        /* Lists styling */
+        .event-content ul,
+        .event-content ol {
+            margin: 24px 0 !important;
+            padding-left: 40px !important;
+            color: #4B5563 !important;
+            list-style-position: outside !important;
+        }
+        
+        .event-content li {
+            margin: 12px 0 !important;
+            line-height: 1.8 !important;
+            color: #4B5563 !important;
+            padding-left: 8px !important;
+        }
+        
+        .event-content ul {
+            list-style-type: disc !important;
+        }
+        
+        .event-content ol {
+            list-style-type: decimal !important;
+        }
+        
+        .event-content ul ul {
+            list-style-type: circle !important;
+            margin: 8px 0 !important;
+        }
+        
+        .event-content ol ol {
+            list-style-type: lower-alpha !important;
+            margin: 8px 0 !important;
+        }
+        
+        /* Headings in content */
+        .event-content h1,
+        .event-content h2,
+        .event-content h3,
+        .event-content h4,
+        .event-content h5,
+        .event-content h6 {
+            font-weight: 700 !important;
+            margin-top: 48px !important;
+            margin-bottom: 24px !important;
+            color: #1F2937 !important;
+            line-height: 1.3 !important;
+            font-family: inherit !important;
+        }
+        
+        .event-content h1:first-child,
+        .event-content h2:first-child,
+        .event-content h3:first-child,
+        .event-content h4:first-child,
+        .event-content h5:first-child,
+        .event-content h6:first-child {
+            margin-top: 0 !important;
+        }
+        
+        .event-content h1 { font-size: 1.75em !important; }
+        .event-content h2 { font-size: 1.375em !important; }
+        .event-content h3 { font-size: 1.125em !important; }
+        .event-content h4 { font-size: 1em !important; }
+        .event-content h5 { font-size: 0.9em !important; }
+        .event-content h6 { font-size: 0.85em !important; }
+        
+        /* Paragraphs */
+        .event-content p {
+            margin: 0 0 20px 0 !important;
+            line-height: 1.8 !important;
+            color: #4B5563 !important;
+            font-size: 15px !important;
+            text-align: justify !important;
+            word-spacing: 0.05em !important;
+        }
+        
+        .event-content p:first-child {
+            margin-top: 0 !important;
+        }
+        
+        .event-content p:last-child {
+            margin-bottom: 0 !important;
+        }
+        
+        .event-content p + p {
+            margin-top: 20px !important;
+        }
+        
+        .event-content h1 + p,
+        .event-content h2 + p,
+        .event-content h3 + p,
+        .event-content h4 + p,
+        .event-content h5 + p,
+        .event-content h6 + p {
+            margin-top: 0 !important;
+        }
+        
+        /* Links */
+        .event-content a {
+            color: #3B82F6 !important;
+            text-decoration: underline !important;
+            text-decoration-thickness: 1px !important;
+            text-underline-offset: 2px !important;
+            font-weight: 500 !important;
+            transition: all 0.2s !important;
+        }
+        
+        .event-content a:hover {
+            color: #2563EB !important;
+            text-decoration-thickness: 2px !important;
+        }
+        
+        /* Images */
+        .event-content img {
+            border-radius: 12px !important;
+            max-width: 100% !important;
+            height: auto !important;
+            margin: 32px auto !important;
+            display: block !important;
+            box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1) !important;
+        }
+        
+        /* Strong/Bold */
+        .event-content strong,
+        .event-content b {
+            font-weight: 700 !important;
+            color: #1F2937 !important;
+        }
+        
+        /* Italic/Em */
+        .event-content em,
+        .event-content i {
+            font-style: italic !important;
+        }
+        
+        /* Underline */
+        .event-content u {
+            text-decoration: underline !important;
+        }
+        
+        /* Strikethrough */
+        .event-content s,
+        .event-content strike,
+        .event-content del {
+            text-decoration: line-through !important;
+        }
+        
+        /* Superscript & Subscript */
+        .event-content sup {
+            vertical-align: super !important;
+            font-size: 0.75em !important;
+        }
+        
+        .event-content sub {
+            vertical-align: sub !important;
+            font-size: 0.75em !important;
+        }
+        
+        /* Tables (if any) */
+        .event-content table {
+            width: 100% !important;
+            border-collapse: collapse !important;
+            margin: 24px 0 !important;
+        }
+        
+        .event-content table th,
+        .event-content table td {
+            padding: 12px 16px !important;
+            border: 1px solid #E5E7EB !important;
+            text-align: left !important;
+        }
+        
+        .event-content table th {
+            background-color: #F9FAFB !important;
+            font-weight: 700 !important;
+            color: #1F2937 !important;
+        }
+        
+        .event-content table td {
+            color: #4B5563 !important;
+        }
+        
+        /* Spacing between different elements */
+        .event-content h1 + h2,
+        .event-content h2 + h3,
+        .event-content h3 + h4,
+        .event-content h4 + h5,
+        .event-content h5 + h6 {
+            margin-top: 24px !important;
+        }
+        
+        .event-content ul + p,
+        .event-content ol + p,
+        .event-content p + ul,
+        .event-content p + ol {
+            margin-top: 20px !important;
+        }
+        
+        .event-content ul + h1,
+        .event-content ul + h2,
+        .event-content ul + h3,
+        .event-content ul + h4,
+        .event-content ul + h5,
+        .event-content ul + h6,
+        .event-content ol + h1,
+        .event-content ol + h2,
+        .event-content ol + h3,
+        .event-content ol + h4,
+        .event-content ol + h5,
+        .event-content ol + h6 {
+            margin-top: 48px !important;
+        }
+        
+        /* Remove any unwanted margins on first/last elements */
+        .event-content > *:first-child {
+            margin-top: 0 !important;
+        }
+        
+        .event-content > *:last-child {
+            margin-bottom: 0 !important;
+        }
+    </style>
 
 </div>

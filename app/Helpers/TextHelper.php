@@ -13,6 +13,26 @@ if (! function_exists('auto_format_text')) {
         // Handle different types of line breaks
         $text = str_replace(["\r\n", "\r"], "\n", $text);
 
+        // Preserve code blocks - extract them first
+        $codeBlocks = [];
+        $codeBlockIndex = 0;
+        
+        // Extract <pre><code> blocks
+        $text = preg_replace_callback('/<pre>(.*?)<\/pre>/s', function($matches) use (&$codeBlocks, &$codeBlockIndex) {
+            $placeholder = "___CODE_BLOCK_{$codeBlockIndex}___";
+            $codeBlocks[$placeholder] = $matches[0];
+            $codeBlockIndex++;
+            return $placeholder;
+        }, $text);
+        
+        // Also extract standalone <code> tags
+        $text = preg_replace_callback('/<code>(.*?)<\/code>/s', function($matches) use (&$codeBlocks, &$codeBlockIndex) {
+            $placeholder = "___CODE_BLOCK_{$codeBlockIndex}___";
+            $codeBlocks[$placeholder] = $matches[0];
+            $codeBlockIndex++;
+            return $placeholder;
+        }, $text);
+
         // Split by double line breaks - try multiple approaches
         $paragraphs = [];
 
@@ -29,6 +49,13 @@ if (! function_exists('auto_format_text')) {
         foreach ($paragraphs as $paragraph) {
             $paragraph = trim($paragraph);
             if (! empty($paragraph)) {
+                // Check if this paragraph is a code block placeholder
+                if (preg_match('/___CODE_BLOCK_\d+___/', $paragraph)) {
+                    // Don't process code blocks, just add them as is
+                    $formatted[] = $paragraph;
+                    continue;
+                }
+                
                 // Replace single line breaks with spaces
                 $paragraph = str_replace("\n", ' ', $paragraph);
 
@@ -47,6 +74,13 @@ if (! function_exists('auto_format_text')) {
             }
         }
 
-        return implode('', $formatted);
+        $result = implode('', $formatted);
+        
+        // Restore code blocks
+        foreach ($codeBlocks as $placeholder => $codeBlock) {
+            $result = str_replace($placeholder, $codeBlock, $result);
+        }
+        
+        return $result;
     }
 }
