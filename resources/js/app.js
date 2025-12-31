@@ -111,19 +111,6 @@ export {
   SkeletonLoader, useScrollAnimation
 };
 
-// Register Service Worker for caching
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then((registration) => {
-                console.log('SW registered:', registration.scope);
-            })
-            .catch((error) => {
-                console.warn('SW registration failed:', error);
-            });
-    });
-}
-
 // Smooth scroll to anchors with error handling
 document.addEventListener('click', (e) => {
     try {
