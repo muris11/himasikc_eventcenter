@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
 
     @php
         $metaTitle = trim($__env->yieldContent('title'));
@@ -38,11 +40,16 @@
             $metaOgType = 'website';
         }
 
-        $metaOgImage = trim($__env->yieldContent('og_image'));
-        if ($metaOgImage === '') {
-            $metaOgImage = $og_image ?? $ogImage ?? asset('images/og-default.jpg');
-        }
-    @endphp
+	        $metaOgImage = trim($__env->yieldContent('og_image'));
+	        if ($metaOgImage === '') {
+	            $metaOgImage = $og_image ?? $ogImage ?? asset('images/featured-event.png');
+	        }
+
+	        $metaOgImageAlt = trim($__env->yieldContent('og_image_alt'));
+	        if ($metaOgImageAlt === '') {
+	            $metaOgImageAlt = $og_image_alt ?? $ogImageAlt ?? $metaTitle;
+	        }
+	    @endphp
 
     <!-- SEO Meta Tags -->
     <title>{{ $metaTitle }}</title>
@@ -62,21 +69,23 @@
     <meta property="og:type" content="{{ $metaOgType }}">
     <meta property="og:url" content="{{ $metaCanonical }}">
     <meta property="og:title" content="{{ $metaTitle }}">
-    <meta property="og:description" content="{{ $metaDescription }}">
-    <meta property="og:image" content="{{ $metaOgImage }}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+	    <meta property="og:description" content="{{ $metaDescription }}">
+	    <meta property="og:image" content="{{ $metaOgImage }}">
+	    <meta property="og:image:alt" content="{{ $metaOgImageAlt }}">
+	    <meta property="og:image:width" content="1200">
+	    <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="HIMA-SIKC Event Center">
     <meta property="og:locale" content="id_ID">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="{{ $metaCanonical }}">
-    <meta name="twitter:title" content="{{ $metaTitle }}">
-    <meta name="twitter:description" content="{{ $metaDescription }}">
-    <meta name="twitter:image" content="{{ $metaOgImage }}">
-    <meta name="twitter:site" content="@himasikc_polindra">
-    <meta name="twitter:creator" content="@himasikc_polindra">
+	    <meta name="twitter:title" content="{{ $metaTitle }}">
+	    <meta name="twitter:description" content="{{ $metaDescription }}">
+	    <meta name="twitter:image" content="{{ $metaOgImage }}">
+	    <meta name="twitter:image:alt" content="{{ $metaOgImageAlt }}">
+	    <meta name="twitter:site" content="@himasikc_polindra">
+	    <meta name="twitter:creator" content="@himasikc_polindra">
 
     <!-- PWA & Favicon -->
     <link rel="manifest" href="{{ asset('manifest.json') }}">

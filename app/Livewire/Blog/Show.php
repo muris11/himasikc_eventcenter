@@ -79,7 +79,7 @@ class Show extends Component
         ]));
         $ogImage = $this->post->image_path
           ? asset('storage/'.$this->post->image_path)
-          : asset('images/og-default.jpg');
+          : asset('images/featured-event.png');
 
         $canonical = route('blog.show', $this->post->slug);
         $structuredData = '<script type="application/ld+json">'.json_encode(
@@ -91,7 +91,9 @@ class Show extends Component
             'title' => $title,
             'description' => $description,
             'keywords' => $keywords,
+            'og_type' => 'article',
             'og_image' => $ogImage,
+            'og_image_alt' => $this->post->title,
             'canonical' => $canonical,
             'structuredData' => $structuredData,
         ]);

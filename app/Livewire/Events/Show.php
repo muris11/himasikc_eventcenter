@@ -88,7 +88,7 @@ class Show extends Component
         ]));
         $ogImage = $this->event->image_path
             ? asset('storage/'.$this->event->image_path)
-            : asset('images/og-default.jpg');
+            : asset('images/featured-event.png');
 
         $canonical = route('events.show', $this->event->slug);
 
@@ -101,7 +101,9 @@ class Show extends Component
             'title' => $title,
             'description' => $description,
             'keywords' => $keywords,
+            'og_type' => 'article',
             'og_image' => $ogImage,
+            'og_image_alt' => $this->event->title,
             'canonical' => $canonical,
             'structuredData' => $structuredData,
         ]);

@@ -161,17 +161,30 @@
          function sharePostToWhatsApp() {
              const url = window.location.href;
              const title = "{{ $post->title }}";
-             const text = `*${title}*\n\nBaca artikel ini: ${url}`;
+             const text = `*${title}*\n${url}`;
              window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
          }
  
          function copyLink() {
              const url = window.location.href;
-             navigator.clipboard.writeText(url).then(() => {
-                 window.dispatchEvent(new CustomEvent('notify', {
-                     detail: { message: 'Link berhasil disalin!', type: 'success' }
-                 }));
-             });
+             if (navigator.clipboard && window.isSecureContext) {
+                 navigator.clipboard.writeText(url).then(() => {
+                     window.dispatchEvent(new CustomEvent('notify', {
+                         detail: { message: 'Link berhasil disalin!', type: 'success' }
+                     }));
+                 });
+                 return;
+             }
+ 
+             const input = document.createElement('input');
+             input.value = url;
+             document.body.appendChild(input);
+             input.select();
+             document.execCommand('copy');
+             document.body.removeChild(input);
+             window.dispatchEvent(new CustomEvent('notify', {
+                 detail: { message: 'Link berhasil disalin!', type: 'success' }
+             }));
          }
      </script>
  </div>
