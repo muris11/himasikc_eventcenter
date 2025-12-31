@@ -88,16 +88,16 @@
                         @endif
                     </div>
 
-                    <div class="p-8 sm:p-10 bg-surface relative">
+                    <div class="p-4 sm:p-8 lg:p-10 bg-surface relative">
                         {{-- Header --}}
-                        <div class="mb-10 pb-10 border-b border-border">
-                            <div class="flex flex-wrap items-center gap-3 mb-5">
+                        <div class="mb-6 sm:mb-10 pb-6 sm:pb-10 border-b border-border">
+                            <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                                 @if($event->category)
-                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-primary-50 text-primary-700 border border-primary-100">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs sm:text-sm font-semibold bg-primary-50 text-primary-700 border border-primary-100">
                                         {{ $event->category->name }}
                                     </span>
                                 @endif
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold {{ $event->is_active ? 'bg-green-50 text-status-success border border-green-200' : 'bg-surface-secondary text-text-muted border border-border' }}">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs sm:text-sm font-semibold {{ $event->is_active ? 'bg-green-50 text-status-success border border-green-200' : 'bg-surface-secondary text-text-muted border border-border' }}">
                                     <span class="w-2 h-2 rounded-full mr-2 {{ $event->is_active ? 'bg-status-success animate-pulse' : 'bg-text-muted' }}"></span>
                                     {{ $event->is_active ? 'Registrasi Dibuka' : 'Registrasi Ditutup' }}
                                 </span>
@@ -122,37 +122,37 @@
                         </div>
 
                         {{-- Event Details Grid --}}
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-                            <div class="flex items-start gap-5 p-6 rounded-3xl bg-surface-secondary border border-border hover:border-primary-200 transition-colors group">
-                                <div class="p-3.5 bg-surface rounded-xl shadow-sm group-hover:shadow-md transition-shadow">
-                                    <svg class="w-7 h-7 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
+                            <div class="flex items-start gap-3 sm:gap-5 p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-surface-secondary border border-border hover:border-primary-200 transition-colors group">
+                                <div class="p-2.5 sm:p-3.5 bg-surface rounded-xl shadow-sm group-hover:shadow-md transition-shadow">
+                                    <svg class="w-5 h-5 sm:w-7 sm:h-7 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-sm font-bold text-text-main mb-1 font-heading uppercase tracking-wide">Tanggal & Waktu</h3>
-                                    <p class="text-text-muted font-medium">{{ $event->date->locale('id')->isoFormat('dddd, D MMMM Y') }}</p>
-                                    <p class="text-sm text-text-muted mt-0.5">Pukul {{ $event->date->format('H:i') }} WIB</p>
+                                    <h3 class="text-xs sm:text-sm font-bold text-text-main mb-1 font-heading uppercase tracking-wide">Tanggal & Waktu</h3>
+                                    <p class="text-sm sm:text-base text-text-muted font-medium">{{ $event->date->locale('id')->isoFormat('dddd, D MMMM Y') }}</p>
+                                    <p class="text-xs sm:text-sm text-text-muted mt-0.5">Pukul {{ $event->date->format('H:i') }} WIB</p>
                                 </div>
                             </div>
 
-                            <div class="flex items-start gap-5 p-6 rounded-3xl bg-surface-secondary border border-border hover:border-primary-200 transition-colors group">
-                                <div class="p-3.5 bg-surface rounded-xl shadow-sm group-hover:shadow-md transition-shadow">
-                                    <svg class="w-7 h-7 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="flex items-start gap-3 sm:gap-5 p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-surface-secondary border border-border hover:border-primary-200 transition-colors group">
+                                <div class="p-2.5 sm:p-3.5 bg-surface rounded-xl shadow-sm group-hover:shadow-md transition-shadow">
+                                    <svg class="w-5 h-5 sm:w-7 sm:h-7 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                                     </svg>
                                 </div>
 	                                <div>
-	                                    <h3 class="text-sm font-bold text-text-main mb-1 font-heading uppercase tracking-wide">Lokasi</h3>
-	                                    <p class="text-text-muted font-medium">{{ $event->location ?? 'Online / Daring' }}</p>
+	                                    <h3 class="text-xs sm:text-sm font-bold text-text-main mb-1 font-heading uppercase tracking-wide">Lokasi</h3>
+	                                    <p class="text-sm sm:text-base text-text-muted font-medium">{{ $event->location ?? 'Online / Daring' }}</p>
 	                                </div>
 	                            </div>
 	                        </div>
 
                         {{-- Description --}}
-                        <div class="event-content mb-12">
-                            <h3 class="text-2xl font-bold text-text-main mb-6 font-heading">Deskripsi Event</h3>
+                        <div class="event-content mb-8 sm:mb-12">
+                            <h3 class="text-xl sm:text-2xl font-bold text-text-main mb-4 sm:mb-6 font-heading">Deskripsi Event</h3>
                             <div class="prose prose-lg max-w-none prose-headings:text-text-main prose-p:text-text-muted prose-a:text-primary-600 prose-strong:text-text-main prose-ul:my-4 prose-ol:my-4 prose-li:my-2">
                                 {!! auto_format_text($event->description) !!}
                             </div>
@@ -194,35 +194,35 @@
             </div>
 
             {{-- Sticky Sidebar --}}
-            <aside class="lg:col-span-1 space-y-8">
+            <aside class="lg:col-span-1 space-y-6 sm:space-y-8">
                 {{-- Event Info Card --}}
-                <div class="lg:sticky lg:top-24 space-y-8">
-                    <div class="bg-surface rounded-3xl border border-border shadow-sm p-8">
-                        <h3 class="font-bold text-text-main font-heading text-lg mb-6 pb-4 border-b border-border">Info Tambahan</h3>
+                <div class="lg:sticky lg:top-24 space-y-6 sm:space-y-8">
+                    <div class="bg-surface rounded-2xl sm:rounded-3xl border border-border shadow-sm p-4 sm:p-6 lg:p-8">
+                        <h3 class="font-bold text-text-main font-heading text-base sm:text-lg mb-4 sm:mb-6 pb-3 sm:pb-4 border-b border-border">Info Tambahan</h3>
 
-                        <div class="space-y-6">
-                            <div class="flex items-start gap-4">
-                                <div class="p-2 bg-surface-secondary rounded-lg text-text-muted mt-0.5">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="space-y-4 sm:space-y-6">
+                            <div class="flex items-start gap-3 sm:gap-4">
+                                <div class="p-1.5 sm:p-2 bg-surface-secondary rounded-lg text-text-muted mt-0.5">
+                                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
                                     </svg>
                                 </div>
                                 <div>
                                     <p class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-1">Tipe Partisipan</p>
-                                    <p class="font-medium text-text-main capitalize">{{ str_replace('_', ' ', $event->participant_type) }}</p>
+                                    <p class="text-sm sm:text-base font-medium text-text-main capitalize">{{ str_replace('_', ' ', $event->participant_type) }}</p>
                                 </div>
                             </div>
 
                             @if($event->organizer)
-                                <div class="flex items-start gap-4">
-                                    <div class="p-2 bg-surface-secondary rounded-lg text-text-muted mt-0.5">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div class="flex items-start gap-3 sm:gap-4">
+                                    <div class="p-1.5 sm:p-2 bg-surface-secondary rounded-lg text-text-muted mt-0.5">
+                                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                                         </svg>
                                     </div>
                                     <div>
                                         <p class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-1">Penyelenggara</p>
-                                        <p class="font-medium text-text-main">{{ $event->organizer }}</p>
+                                        <p class="text-sm sm:text-base font-medium text-text-main">{{ $event->organizer }}</p>
                                     </div>
                                 </div>
                             @endif
@@ -231,27 +231,27 @@
 
 	                    {{-- Related Events (Desktop) --}}
 	                    @if (isset($relatedEvents) && $relatedEvents->count() > 0)
-	                        <div class="bg-surface rounded-3xl border border-border shadow-sm p-8">
-	                            <h3 class="font-bold text-text-main font-heading text-lg mb-6 pb-4 border-b border-border">Event Terkait</h3>
+	                        <div class="bg-surface rounded-2xl sm:rounded-3xl border border-border shadow-sm p-4 sm:p-6 lg:p-8">
+	                            <h3 class="font-bold text-text-main font-heading text-base sm:text-lg mb-4 sm:mb-6 pb-3 sm:pb-4 border-b border-border">Event Terkait</h3>
 
-                            <div class="space-y-5">
+                            <div class="space-y-4 sm:space-y-5">
                                 @foreach($relatedEvents as $relEvent)
-                                    <a href="{{ route('events.show', $relEvent) }}" class="flex gap-4 group">
-                                        <div class="w-20 h-20 bg-surface-secondary rounded-xl overflow-hidden flex-shrink-0 relative">
+                                    <a href="{{ route('events.show', $relEvent) }}" class="flex gap-3 sm:gap-4 group">
+                                        <div class="w-16 h-16 sm:w-20 sm:h-20 bg-surface-secondary rounded-lg sm:rounded-xl overflow-hidden flex-shrink-0 relative">
                                             @if ($relEvent->image_path)
                                                 <img src="{{ asset('storage/' . $relEvent->image_path) }}" 
                                                      alt="{{ $relEvent->title }}" 
                                                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                             @else
                                                 <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-50 to-primary-100">
-                                                    <svg class="w-8 h-8 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <svg class="w-6 h-6 sm:w-8 sm:h-8 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                                                     </svg>
 	                        </div>
 	                    @endif
 	                </div>
                                         <div class="flex-1 min-w-0 py-1">
-                                            <h4 class="text-sm font-bold text-text-main line-clamp-2 group-hover:text-primary-600 transition-colors mb-1.5 leading-snug">
+                                            <h4 class="text-xs sm:text-sm font-bold text-text-main line-clamp-2 group-hover:text-primary-600 transition-colors mb-1 sm:mb-1.5 leading-snug">
                                                 {{ $relEvent->title }}
                                             </h4>
                                             <p class="text-xs text-text-muted flex items-center gap-1.5 font-medium">
