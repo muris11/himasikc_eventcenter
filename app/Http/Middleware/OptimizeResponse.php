@@ -25,9 +25,14 @@ class OptimizeResponse
                 $response->headers->set('Expires', now()->addYear()->toRfc7231String());
             }
 
-            // Add caching for pages (5 minutes)
-            elseif ($request->isMethod('GET') && ! $request->has('page')) {
-                $response->headers->set('Cache-Control', 'public, max-age=300');
+            // Prevent stale HTML for dynamic pages and admin sessions.
+            elseif ($request->isMethod('GET')) {
+                if ($request->is('admin/*') || $request->is('livewire/*') || auth()->check()) {
+                    $response->headers->set('Cache-Control', 'no-store, private');
+                } else {
+                    // Allow caching by intermediaries, but always revalidate so updates are seen immediately.
+                    $response->headers->set('Cache-Control', 'public, max-age=0, must-revalidate');
+                }
             }
         }
 

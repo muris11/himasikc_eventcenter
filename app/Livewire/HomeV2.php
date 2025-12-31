@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Event;
 use App\Models\Post;
+use function App\Providers\public_cache;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 

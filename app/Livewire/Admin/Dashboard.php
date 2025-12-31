@@ -25,6 +25,12 @@ class Dashboard extends Component
                 'publishedPosts' => Post::where('is_published', true)->count(),
                 'totalEventCategories' => EventCategory::count(),
                 'totalBlogCategories' => PostCategory::count(),
+                'eventsByCategory' => EventCategory::withCount('events')->get()->map(function ($category) {
+                    return [
+                        'name' => $category->name,
+                        'count' => $category->events_count,
+                    ];
+                }),
             ];
         });
 

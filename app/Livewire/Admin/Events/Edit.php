@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Events;
 
 use App\Models\Event;
 use App\Models\EventCategory;
+use function App\Providers\public_cache_forget;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;

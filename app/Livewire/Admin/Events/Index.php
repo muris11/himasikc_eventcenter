@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Events;
 
 use App\Models\Event;
+use function App\Providers\public_cache_forget;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Attributes\Layout;
 use Livewire\Component;

@@ -45,25 +45,6 @@ class AppServiceProvider extends ServiceProvider
             }
         }
 
-        if (! function_exists('public_cache')) {
-            function public_cache()
-            {
-                $defaultStore = (string) config('cache.default', 'file');
-
-                return $defaultStore === 'database'
-                    ? Cache::store('file')
-                    : Cache::store($defaultStore);
-            }
-        }
-
-        if (! function_exists('public_cache_forget')) {
-            function public_cache_forget(string $key): void
-            {
-                Cache::forget($key);
-                Cache::store('file')->forget($key);
-            }
-        }
-
         // Register custom string helper for auto-formatting text
         if (! function_exists('auto_format_text')) {
             function auto_format_text($text)
@@ -103,5 +84,24 @@ class AppServiceProvider extends ServiceProvider
                 return implode('', $formatted);
             }
         }
+    }
+}
+
+if (! function_exists(__NAMESPACE__.'\\public_cache')) {
+    function public_cache()
+    {
+        $defaultStore = (string) config('cache.default', 'file');
+
+        return $defaultStore === 'database'
+            ? Cache::store('file')
+            : Cache::store($defaultStore);
+    }
+}
+
+if (! function_exists(__NAMESPACE__.'\\public_cache_forget')) {
+    function public_cache_forget(string $key): void
+    {
+        Cache::forget($key);
+        Cache::store('file')->forget($key);
     }
 }

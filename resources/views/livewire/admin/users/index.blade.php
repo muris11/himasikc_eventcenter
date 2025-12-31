@@ -7,13 +7,13 @@
             </h1>
             <p class="text-text-muted mt-1 text-lg">Kelola semua pengguna sistem dengan mudah dan efisien</p>
         </div>
-        <button wire:click="openModal"
+        <a href="{{ route('admin.users.create') }}"
             class="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-bold rounded-xl shadow-lg shadow-primary-500/30 hover:shadow-primary-500/40 transform hover:-translate-y-0.5 transition-all duration-200 group">
             <svg class="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
             </svg>
             Tambah Pengguna
-        </button>
+        </a>
     </div>
 
     @if (session()->has('success'))
@@ -168,12 +168,12 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="flex items-center justify-end gap-2">
-                                    <button wire:click="editUser({{ $user->id }})"
+                                    <a href="{{ route('admin.users.edit', $user->id) }}"
                                         class="h-11 w-11 flex items-center justify-center bg-surface border border-border text-text-muted hover:text-primary-600 hover:border-primary-200 hover:bg-primary-50 rounded-xl transition-all shadow-sm hover:shadow-md" title="Ubah">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                         </svg>
-                                    </button>
+                                    </a>
                                     @if ($user->role !== 'super_admin')
                                         <button wire:click="deleteUser({{ $user->id }})"
                                             wire:confirm="Apakah Anda yakin ingin menghapus pengguna ini?"
@@ -246,13 +246,13 @@
 
                     <!-- Actions -->
                     <div class="mt-4 flex items-center justify-end gap-3 pt-3 border-t border-border border-dashed">
-                        <button wire:click="editUser({{ $user->id }})"
+                        <a href="{{ route('admin.users.edit', $user->id) }}"
                             class="h-10 px-4 flex items-center justify-center bg-surface border border-border text-text-muted hover:text-primary-600 hover:border-primary-200 hover:bg-primary-50 rounded-xl transition-all shadow-sm hover:shadow-md text-sm font-medium">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                             </svg>
                             Ubah
-                        </button>
+                        </a>
                         @if ($user->role !== 'super_admin')
                             <button wire:click="deleteUser({{ $user->id }})"
                                 wire:confirm="Apakah Anda yakin ingin menghapus pengguna ini?"
@@ -282,93 +282,5 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    @if ($showModal)
-        <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                <div class="fixed inset-0 z-0 bg-slate-900/75 backdrop-blur-sm transition-opacity" aria-hidden="true" wire:click="closeModal"></div>
 
-                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-
-                <div class="relative z-10 inline-block align-bottom bg-surface rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full border border-border">
-                    <div class="bg-surface px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        <div class="sm:flex sm:items-start">
-                            <div class="mx-auto shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-primary-50 sm:mx-0 sm:h-10 sm:w-10">
-                                <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                </svg>
-                            </div>
-                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-                                <h3 class="text-lg leading-6 font-bold text-text-main font-heading" id="modal-title">
-                                    {{ $isEditing ? 'Edit Pengguna' : 'Tambah Pengguna Baru' }}
-                                </h3>
-                                <div class="mt-4">
-                                    <form wire:submit.prevent="{{ $isEditing ? 'updateUser' : 'createUser' }}">
-                                        <div class="mb-4">
-                                            <label class="block text-sm font-bold text-text-main mb-2" for="name">
-                                                Nama Lengkap
-                                            </label>
-                                            <input wire:model="name"
-                                                class="block w-full px-4 py-2.5 border border-border rounded-xl shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm bg-surface-secondary/30 focus:bg-white transition-colors"
-                                                id="name" type="text" required placeholder="Masukkan nama lengkap">
-                                            @error('name')
-                                                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="mb-4">
-                                            <label class="block text-sm font-bold text-text-main mb-2" for="email">
-                                                Email
-                                            </label>
-                                            <input wire:model="email"
-                                                class="block w-full px-4 py-2.5 border border-border rounded-xl shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm bg-surface-secondary/30 focus:bg-white transition-colors"
-                                                id="email" type="email" required placeholder="nama@email.com">
-                                            @error('email')
-                                                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        @if (!$isEditing)
-                                            <div class="mb-4">
-                                                <label class="block text-sm font-bold text-text-main mb-2" for="password">
-                                                    Password
-                                                </label>
-                                                <input wire:model="password"
-                                                    class="block w-full px-4 py-2.5 border border-border rounded-xl shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm bg-surface-secondary/30 focus:bg-white transition-colors"
-                                                    id="password" type="password" required placeholder="********">
-                                                @error('password')
-                                                    <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        @endif
-                                        <div class="mb-6">
-                                            <label class="block text-sm font-bold text-text-main mb-2" for="role">
-                                                Peran
-                                            </label>
-                                            <select wire:model="role"
-                                                class="block w-full px-4 py-2.5 border border-border rounded-xl shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm bg-surface-secondary/30 focus:bg-white transition-colors">
-                                                <option value="user">Pengguna</option>
-                                                <option value="admin">Admin</option>
-                                            </select>
-                                            @error('role')
-                                                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="flex items-center justify-end gap-3 mt-6">
-                                            <button type="button" wire:click="closeModal"
-                                                class="px-4 py-2.5 text-sm font-bold text-text-muted bg-surface-secondary hover:bg-surface-secondary/80 rounded-xl transition-colors">
-                                                Batal
-                                            </button>
-                                            <button type="submit"
-                                                class="px-4 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 rounded-xl shadow-lg shadow-primary-500/30 hover:shadow-primary-500/40 transition-all">
-                                                {{ $isEditing ? 'Perbarui' : 'Tambah' }}
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
 </div>

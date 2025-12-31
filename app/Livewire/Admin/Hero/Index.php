@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Hero;
 
 use App\Models\HeroSection;
+use function App\Providers\public_cache_forget;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;

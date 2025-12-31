@@ -3,7 +3,6 @@
 namespace App\Livewire\Admin\Users;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;

@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Posts;
 
 use App\Models\Post;
 use App\Models\PostCategory;
+use function App\Providers\public_cache_forget;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
