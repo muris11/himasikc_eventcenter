@@ -1,9 +1,9 @@
 <div class="py-12 bg-background min-h-screen pb-24 lg:pb-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {{-- Breadcrumb --}}
-        <nav class="flex mb-8 text-sm" aria-label="Breadcrumb">
-            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+	        {{-- Breadcrumb --}}
+	        <nav class="flex mb-8 text-sm" aria-label="Breadcrumb">
+	            <ol class="flex flex-wrap items-center gap-x-1 gap-y-1 md:gap-x-3">
                 <li class="inline-flex items-center">
                     <a href="{{ route('home') }}" class="text-text-muted hover:text-primary-600 transition-colors flex items-center gap-1">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -20,16 +20,16 @@
                         <a href="{{ route('events.index') }}" class="ml-1 text-text-muted hover:text-primary-600 transition-colors">Event</a>
                     </div>
                 </li>
-                <li aria-current="page">
-                    <div class="flex items-center">
-                        <svg class="w-4 h-4 text-text-muted mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
-                        <span class="ml-1 text-text-main font-medium truncate max-w-[200px] sm:max-w-xs">{{ $event->title }}</span>
-                    </div>
-                </li>
-            </ol>
-        </nav>
+	                <li aria-current="page">
+	                    <div class="flex items-center">
+	                        <svg class="w-4 h-4 text-text-muted mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+	                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+	                        </svg>
+	                        <span class="ml-1 text-text-main font-medium whitespace-normal break-words">{{ $event->title }}</span>
+	                    </div>
+	                </li>
+	            </ol>
+	        </nav>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {{-- Main Content --}}

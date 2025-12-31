@@ -13,7 +13,7 @@
          
          {{-- Breadcrumb --}}
          <nav class="flex mb-8 text-sm" aria-label="Breadcrumb">
-             <ol class="inline-flex items-center space-x-1 md:space-x-3">
+             <ol class="flex flex-wrap items-center gap-x-1 gap-y-1 md:gap-x-3">
                  <li class="inline-flex items-center">
                      <a href="{{ route('home') }}" class="text-text-muted hover:text-primary-600 transition-colors flex items-center gap-1">
                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -35,7 +35,7 @@
                          <svg class="w-4 h-4 text-text-muted mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                          </svg>
-                         <span class="ml-1 text-text-main font-medium truncate max-w-[200px] sm:max-w-xs">{{ $post->title }}</span>
+                         <span class="ml-1 text-text-main font-medium whitespace-normal break-words">{{ $post->title }}</span>
                      </div>
                  </li>
              </ol>
